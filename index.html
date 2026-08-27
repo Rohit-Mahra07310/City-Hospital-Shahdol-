@@ -1,0 +1,526 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>City Hospital Shahdol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "tertiary-fixed": "#dce3eb",
+                            "primary-fixed": "#d7e2ff",
+                            "primary-container": "#004a99",
+                            "on-tertiary-fixed": "#151c22",
+                            "surface-dim": "#cbdbf5",
+                            "on-background": "#0b1c30",
+                            "tertiary-container": "#464d53",
+                            "tertiary": "#2f363c",
+                            "surface-container-highest": "#d3e4fe",
+                            "outline-variant": "#c2c6d3",
+                            "error-container": "#ffdad6",
+                            "on-secondary": "#ffffff",
+                            "secondary-fixed-dim": "#76d6d5",
+                            "on-secondary-fixed-variant": "#004f4f",
+                            "surface-variant": "#d3e4fe",
+                            "secondary-container": "#90efef",
+                            "on-primary-container": "#9bbdff",
+                            "background": "#f8f9ff",
+                            "on-primary-fixed": "#001b3f",
+                            "inverse-primary": "#abc7ff",
+                            "surface": "#f8f9ff",
+                            "on-tertiary-fixed-variant": "#40484e",
+                            "on-tertiary-container": "#b6bec5",
+                            "on-surface": "#0b1c30",
+                            "on-tertiary": "#ffffff",
+                            "surface-tint": "#255dad",
+                            "surface-bright": "#f8f9ff",
+                            "surface-container-lowest": "#ffffff",
+                            "error": "#ba1a1a",
+                            "on-error": "#ffffff",
+                            "on-secondary-container": "#006e6e",
+                            "primary": "#00346f",
+                            "on-primary-fixed-variant": "#00458f",
+                            "secondary-fixed": "#93f2f2",
+                            "primary-fixed-dim": "#abc7ff",
+                            "outline": "#737783",
+                            "on-primary": "#ffffff",
+                            "surface-container": "#e5eeff",
+                            "surface-container-high": "#dce9ff",
+                            "on-secondary-fixed": "#002020",
+                            "on-surface-variant": "#424751",
+                            "inverse-on-surface": "#eaf1ff",
+                            "on-error-container": "#93000a",
+                            "inverse-surface": "#213145",
+                            "tertiary-fixed-dim": "#c0c7cf",
+                            "surface-container-low": "#eff4ff",
+                            "secondary": "#006a6a"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "margin-desktop": "64px",
+                            "gutter": "24px",
+                            "md": "24px",
+                            "xl": "80px",
+                            "margin-mobile": "16px",
+                            "base": "8px",
+                            "lg": "48px",
+                            "sm": "12px",
+                            "xs": "4px"
+                    },
+                    "fontFamily": {
+                            "label-sm": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "headline-sm": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "label-md": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                            "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                            "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                            "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .gradient-btn { background: linear-gradient(180deg, theme('colors.primary'), theme('colors.primary-container')); }
+        .ambient-shadow { box-shadow: 0 10px 30px -10px rgba(0, 74, 153, 0.1); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-white">
+<!-- Top Bar -->
+<div class="bg-primary text-white py-2 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center text-label-sm">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">emergency</span> Emergency: 6936598745 / 8963547822</span>
+</div>
+<div class="mt-1 md:mt-0">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> Mon-Sun: 24/7</span>
+</div>
+</div>
+<!-- TopNavBar Component -->
+<header class="bg-surface dark:bg-inverse-surface shadow-md dark:shadow-sm bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md sticky top-0 z-50 w-full transition-all duration-300" id="navbar">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+<a class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed-dim" href="#">City Hospital Shahdol</a>
+<nav class="hidden md:flex gap-md items-center">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-md font-label-md transition-all" href="#about">About</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-md font-label-md transition-all" href="#departments">Departments</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-md font-label-md transition-all" href="#doctors">Doctors</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-md font-label-md transition-all" href="#services">Services</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-md font-label-md transition-all" href="#facilities">Facilities</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-md font-label-md transition-all" href="#contact">Contact</a>
+</nav>
+<a class="hidden md:inline-flex items-center justify-center gradient-btn text-white px-6 py-2 rounded-lg text-label-md font-label-md scale-95 active:scale-90 transition-transform duration-200 shadow-md" href="#appointment">
+                Book Appointment
+            </a>
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[80vh] min-h-[600px] flex items-center">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full" data-alt="City Hospital Shahdol exterior" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDmSSysXMcttUp7_XzIsGYUjb0o3urNC4yMuPvoZfOx0oVB-bIedT3aZMWZI22V8XF7i08O46xSMvV4suunrgWS1IkAFU7WXTIHIrTGWuWJaH3sMRWFMcjhEjzKvfgIZJ1aT9fXrpI3jLN0AUg2D8K7LinP0WknQLQO_qyFtDFsuiPCZJEyjRGsbclHGI-K1sAnJc5oRH3zg6dKcEiFur0xBWSa6fT-wLXhPVpK2YEu2SYpfn_a5CoK&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface/90 to-surface/40"></div>
+</div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop fade-in visible">
+<div class="max-w-2xl">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-6">
+                        Compassionate Care.<br>Advanced Medicine.<br>Better Lives.
+                    </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8">
+                        Providing world-class healthcare with a human touch. Our team of specialists is here for you 24/7.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="gradient-btn text-white px-8 py-3 rounded-lg text-label-md font-label-md shadow-lg hover:shadow-xl transition-all" href="#appointment">
+                            Book Appointment
+                        </a>
+<a class="bg-white text-primary border-2 border-primary/20 px-8 py-3 rounded-lg text-label-md font-label-md hover:border-primary transition-all shadow-sm" href="tel:6936598745">
+                            Emergency Contact
+                        </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="relative z-20 -mt-16 w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Action Cards -->
+<a class="bg-white p-6 rounded-lg ambient-shadow border-l-4 border-primary hover:-translate-y-1 transition-transform group flex flex-col items-center text-center" href="#appointment">
+<span class="material-symbols-outlined text-primary text-[32px] mb-3 group-hover:scale-110 transition-transform">event</span>
+<span class="text-label-md font-label-md text-on-surface">Book Appt</span>
+</a>
+<a class="bg-white p-6 rounded-lg ambient-shadow border-l-4 border-secondary hover:-translate-y-1 transition-transform group flex flex-col items-center text-center" href="#doctors">
+<span class="material-symbols-outlined text-secondary text-[32px] mb-3 group-hover:scale-110 transition-transform">stethoscope</span>
+<span class="text-label-md font-label-md text-on-surface">Find Doctor</span>
+</a>
+<a class="bg-white p-6 rounded-lg ambient-shadow border-l-4 border-primary hover:-translate-y-1 transition-transform group flex flex-col items-center text-center" href="#departments">
+<span class="material-symbols-outlined text-primary text-[32px] mb-3 group-hover:scale-110 transition-transform">local_hospital</span>
+<span class="text-label-md font-label-md text-on-surface">Departments</span>
+</a>
+<a class="bg-error-container p-6 rounded-lg ambient-shadow border-l-4 border-error hover:-translate-y-1 transition-transform group flex flex-col items-center text-center" href="tel:6936598745">
+<span class="material-symbols-outlined text-error text-[32px] mb-3 group-hover:scale-110 transition-transform">emergency</span>
+<span class="text-label-md font-label-md text-error">Emergency</span>
+</a>
+<a class="bg-white p-6 rounded-lg ambient-shadow border-l-4 border-primary hover:-translate-y-1 transition-transform group flex flex-col items-center text-center" href="#">
+<span class="material-symbols-outlined text-primary text-[32px] mb-3 group-hover:scale-110 transition-transform">description</span>
+<span class="text-label-md font-label-md text-on-surface">Lab Reports</span>
+</a>
+<a class="bg-white p-6 rounded-lg ambient-shadow border-l-4 border-secondary hover:-translate-y-1 transition-transform group flex flex-col items-center text-center" href="#contact">
+<span class="material-symbols-outlined text-secondary text-[32px] mb-3 group-hover:scale-110 transition-transform">call</span>
+<span class="text-label-md font-label-md text-on-surface">Contact Us</span>
+</a>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface" id="about">
+<div class="flex flex-col md:flex-row gap-xl items-center fade-in visible">
+<div class="md:w-1/2">
+<img alt="City Hospital Shahdol exterior" class="rounded-xl shadow-lg w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7uJXXwzrOPI7HJc96BeskdzHtCQ_oUlcIDHrd6YeT3O52kBeBVASLlfRTyG15bb4N02uEUw0SDDfvybg2gUVWQcYg89P8_TU6G5fhObiszGzlYrw9hSqGGXfh2NXlYIetIZqhr8o6uLpHOeJn1TlrJU8oxkrO_wsOCk1CV2oy9izrpIz1JUQUm4uhHT7OOKu7anSCREA5TSb8PMVi9DRbC87k9p6Dhn3K0axo4p8uPL7RksaVM7g1">
+</div>
+<div class="md:w-1/2">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">About City Hospital Shahdol</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">
+                City Hospital Shahdol is a premier healthcare institution dedicated to providing comprehensive and compassionate medical services. Equipped with state-of-the-art technology and staffed by renowned specialists, we are committed to enhancing the health and well-being of our community.
+            </p>
+<ul class="space-y-3 mb-8 text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> 24/7 Emergency Care</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> Advanced Diagnostic Center</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> Specialized Treatment Units</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> Experienced Medical Professionals</li>
+</ul>
+<a class="gradient-btn text-white px-6 py-3 rounded-lg text-label-md font-label-md shadow-md inline-block" href="#contact">Contact Us</a>
+</div>
+</div>
+</section>
+<!-- Departments Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="departments">
+<div class="text-center mb-12 fade-in visible">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Our Departments</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">We offer a wide range of specialized medical services tailored to meet your healthcare needs.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in visible">
+<div class="bg-surface-container p-6 rounded-xl hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">favorite</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Cardiology</h3>
+<p class="text-body-md text-on-surface-variant">Comprehensive heart care, from diagnostics to advanced surgical procedures.</p>
+</div>
+<div class="bg-surface-container p-6 rounded-xl hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">psychology</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Neurology</h3>
+<p class="text-body-md text-on-surface-variant">Expert diagnosis and treatment for disorders of the nervous system.</p>
+</div>
+<div class="bg-surface-container p-6 rounded-xl hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">child_care</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Pediatrics</h3>
+<p class="text-body-md text-on-surface-variant">Dedicated healthcare for infants, children, and adolescents.</p>
+</div>
+<div class="bg-surface-container p-6 rounded-xl hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">bone</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Orthopedics</h3>
+<p class="text-body-md text-on-surface-variant">Specialized care for bones, joints, ligaments, tendons, and muscles.</p>
+</div>
+</div>
+</section>
+<!-- Doctors Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface-container-low" id="doctors">
+<div class="text-center mb-12 fade-in visible">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Meet Our Specialists</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Our team of experienced and dedicated doctors is here to provide you with the best possible care.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto fade-in visible">
+<!-- Doctor 1 -->
+<div class="bg-surface p-6 rounded-xl shadow-sm flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left">
+<div class="w-32 h-32 rounded-full overflow-hidden shrink-0 bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary">person</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Dr. H. P. S. Chandel</h3>
+<p class="text-label-md text-secondary mb-3">Senior Consultant</p>
+<p class="text-body-md text-on-surface-variant mb-4">Highly experienced specialist dedicated to providing comprehensive patient care with a focus on advanced treatments.</p>
+<a class="text-primary font-label-md hover:underline inline-flex items-center gap-1" href="#appointment">
+                    Book Appointment <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Doctor 2 -->
+<div class="bg-surface p-6 rounded-xl shadow-sm flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left">
+<div class="w-32 h-32 rounded-full overflow-hidden shrink-0 bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary">person</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Dr. Aditya Dwivedi</h3>
+<p class="text-label-md text-secondary mb-3">Specialist Physician</p>
+<p class="text-body-md text-on-surface-variant mb-4">Expert physician specializing in accurate diagnosis and personalized treatment plans for complex medical conditions.</p>
+<a class="text-primary font-label-md hover:underline inline-flex items-center gap-1" href="#appointment">
+                    Book Appointment <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="services">
+<div class="text-center mb-12 fade-in visible">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Comprehensive Services</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Providing a full spectrum of healthcare services under one roof.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in visible">
+<div class="border border-outline-variant p-6 rounded-xl">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">24/7 Pharmacy</h3>
+<p class="text-body-md text-on-surface-variant">Fully stocked pharmacy open round the clock for all your medication needs.</p>
+</div>
+<div class="border border-outline-variant p-6 rounded-xl">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Diagnostic Imaging</h3>
+<p class="text-body-md text-on-surface-variant">Advanced MRI, CT scan, X-Ray, and Ultrasound facilities available 24/7.</p>
+</div>
+<div class="border border-outline-variant p-6 rounded-xl">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Laboratory Services</h3>
+<p class="text-body-md text-on-surface-variant">State-of-the-art pathology lab for accurate and timely test results.</p>
+</div>
+</div>
+</section>
+<!-- Facilities Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface" id="facilities">
+<div class="flex flex-col-reverse md:flex-row gap-xl items-center fade-in visible">
+<div class="md:w-1/2">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">World-Class Facilities</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">
+                Our hospital is designed to provide a comfortable and healing environment for our patients and their families.
+            </p>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">hotel</span>
+<div>
+<strong class="text-on-surface block">Comfortable Wards &amp; Private Rooms</strong>
+<span class="text-body-md">Spacious and well-maintained rooms for optimal recovery.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">restaurant</span>
+<div>
+<strong class="text-on-surface block">Cafeteria &amp; Dietetics</strong>
+<span class="text-body-md">Nutritious meals prepared under the guidance of expert dietitians.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">local_parking</span>
+<div>
+<strong class="text-on-surface block">Ample Parking</strong>
+<span class="text-body-md">Secure and convenient parking space for visitors and patients.</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="md:w-1/2">
+<img alt="City Hospital Shahdol exterior" class="rounded-xl shadow-lg w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFkeMfYxg-fpkdu_AesFRC1_8ar_t1xQRMZeQC5dG8nwcBVny3pgsdr9C_Lnyy11xdN-0sjQ5O16zyt_NxQGwMuue9wIHWydQx2MnMQYT1NCxAPKRazksq6Imtbcn0mZX5DJfQeKPQVSNQsuz3caiGFqp6ujJyDlpdtj5411dxlDSvzPX1yb61cLGlJTWhnUpx_ypp65P2z59a2w3JHUl9hlx4nRVDLqexN-D_x-MYEQy_-MLinpe6">
+</div>
+</div>
+</section>
+<!-- Appointment Form Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="appointment">
+<div class="bg-surface-container-high rounded-2xl p-8 md:p-12 shadow-md fade-in max-w-4xl mx-auto visible">
+<div class="text-center mb-8">
+<h2 class="text-headline-md font-headline-md text-primary mb-2">Book an Appointment</h2>
+<p class="text-body-md text-on-surface-variant">Schedule your visit with our specialists.</p>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2" for="name">Full Name</label>
+<input class="w-full rounded-lg border-outline-variant bg-surface px-4 py-3 text-body-md focus:border-primary focus:ring-primary" id="name" placeholder="John Doe" type="text">
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2" for="phone">Phone Number</label>
+<input class="w-full rounded-lg border-outline-variant bg-surface px-4 py-3 text-body-md focus:border-primary focus:ring-primary" id="phone" placeholder="+91 xxxxx xxxxx" type="tel">
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2" for="department">Department</label>
+<select class="w-full rounded-lg border-outline-variant bg-surface px-4 py-3 text-body-md focus:border-primary focus:ring-primary" id="department">
+<option>Select Department</option>
+<option>Cardiology</option>
+<option>Neurology</option>
+<option>Orthopedics</option>
+<option>General Medicine</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2" for="date">Preferred Date</label>
+<input class="w-full rounded-lg border-outline-variant bg-surface px-4 py-3 text-body-md focus:border-primary focus:ring-primary" id="date" type="date">
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2" for="message">Message (Optional)</label>
+<textarea class="w-full rounded-lg border-outline-variant bg-surface px-4 py-3 text-body-md focus:border-primary focus:ring-primary" id="message" placeholder="Any specific concerns..." rows="3"></textarea>
+</div>
+<div class="text-center">
+<button class="gradient-btn text-white px-8 py-3 rounded-lg text-label-md font-label-md shadow-lg hover:shadow-xl transition-all w-full md:w-auto" type="submit">
+                    Submit Request
+                </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface" id="testimonials">
+<div class="text-center mb-12 fade-in visible">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Patient Stories</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Read what our patients have to say about their experience with us.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in visible">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/50 relative">
+<span class="material-symbols-outlined text-primary-container/20 text-6xl absolute top-4 right-4">format_quote</span>
+<p class="text-body-md text-on-surface-variant mb-4 relative z-10">"The care I received at City Hospital was exceptional. The doctors were very attentive and the staff was incredibly supportive throughout my recovery."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">R</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Rahul Sharma</p>
+<p class="text-label-sm text-on-surface-variant">Recovered Patient</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/50 relative">
+<span class="material-symbols-outlined text-primary-container/20 text-6xl absolute top-4 right-4">format_quote</span>
+<p class="text-body-md text-on-surface-variant mb-4 relative z-10">"Dr. Chandel's expertise and compassionate approach made a world of difference for my family. Highly recommend this hospital for its top-notch facilities."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">P</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Priya Singh</p>
+<p class="text-label-sm text-on-surface-variant">Family Member</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/50 relative">
+<span class="material-symbols-outlined text-primary-container/20 text-6xl absolute top-4 right-4">format_quote</span>
+<p class="text-body-md text-on-surface-variant mb-4 relative z-10">"Excellent emergency services. The response time was quick, and the medical team handled the situation with utmost professionalism."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">A</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Amit Patel</p>
+<p class="text-label-sm text-on-surface-variant">Emergency Patient</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto" id="faq">
+<div class="text-center mb-12 fade-in visible">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Frequently Asked Questions</h2>
+</div>
+<div class="space-y-4 fade-in visible">
+<details class="bg-surface p-4 rounded-lg border border-outline-variant group">
+<summary class="flex justify-between items-center cursor-pointer text-label-md font-label-md text-on-surface">
+                What are the visiting hours?
+                <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-body-md text-on-surface-variant">Visiting hours are typically from 4:00 PM to 7:00 PM daily. However, hours may vary for specific departments like ICU.</p>
+</details>
+<details class="bg-surface p-4 rounded-lg border border-outline-variant group">
+<summary class="flex justify-between items-center cursor-pointer text-label-md font-label-md text-on-surface">
+                Do you accept health insurance?
+                <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-body-md text-on-surface-variant">Yes, we accept a wide range of health insurance plans. Please contact our billing department to verify your specific coverage.</p>
+</details>
+<details class="bg-surface p-4 rounded-lg border border-outline-variant group">
+<summary class="flex justify-between items-center cursor-pointer text-label-md font-label-md text-on-surface">
+                How do I get a copy of my medical records?
+                <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-body-md text-on-surface-variant">You can request your medical records by filling out a form at our medical records department or by submitting a written request online.</p>
+</details>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface-container-low" id="contact">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl fade-in visible">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Get In Touch</h2>
+<p class="text-body-md text-on-surface-variant mb-8">We are here to assist you. Reach out to us for appointments, inquiries, or emergencies.</p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Location</h4>
+<p class="text-body-md text-on-surface-variant">City Hospital, Main Road, Shahdol (M.P) 484001</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">phone</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Emergency Contact</h4>
+<p class="text-body-md text-on-surface-variant">6936598745<br>8963547822</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Email</h4>
+<p class="text-body-md text-on-surface-variant">info@cityhospitalshahdol.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-64 md:h-auto bg-outline-variant/20 rounded-xl overflow-hidden flex items-center justify-center">
+<!-- Placeholder for Map -->
+<p class="text-on-surface-variant flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">map</span>
+                Map Location Integration
+            </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-inverse-surface dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline w-full px-margin-desktop py-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary-fixed dark:text-primary">City Hospital Shahdol</span>
+<p class="text-body-md font-body-md text-tertiary-fixed-dim">© 2024 City Hospital Shahdol. All rights reserved. Trusted Healthcare Excellence.</p>
+</div>
+<nav class="flex flex-wrap justify-center md:justify-end gap-4">
+<a class="text-tertiary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors text-label-sm font-label-sm hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-tertiary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors text-label-sm font-label-sm hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-tertiary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors text-label-sm font-label-sm hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Patient Rights</a>
+<a class="text-tertiary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors text-label-sm font-label-sm hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Cookie Policy</a>
+<a class="text-tertiary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors text-label-sm font-label-sm hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Accessibility</a>
+</nav>
+</footer>
+<script>
+        // Simple Intersection Observer for fade-in animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+
+
+</body></html>
